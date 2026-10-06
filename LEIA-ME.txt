@@ -1,23 +1,12 @@
-MESTRE MARCENEIRO - SISTEMA DE BAIXAS V11
+ARQUIVOS PARA BANCO PERSISTENTE - SISTEMA DE BAIXAS
 
-Esta versão é servidor + banco SQLite.
-Ela grava cada atualização diária e permite abrir a última atualização ou consultar o histórico em qualquer computador conectado ao mesmo endereço.
+1. Substitua app.py no GitHub por este arquivo.
+2. Substitua requisitos.txt.
+3. O Dockerfile incluído pode substituir o atual se desejar manter tudo igual ao pacote.
+4. Mantenha o index_v10.html V11.3 já publicado.
+5. No Render, crie/conecte um PostgreSQL e adicione a variável DATABASE_URL ao Web Service.
+6. Faça Deploy latest commit.
+7. Teste /health. Deve retornar banco: conectado.
+8. Grave uma atualização, abra uma nova janela e clique em Abrir última atualização.
 
-ARQUIVOS:
-- app.py: servidor e APIs
-- templates/index.html: sistema V11
-- requirements.txt / Procfile / Dockerfile: publicação
-
-IMPORTANTE PARA HOSPEDAGEM:
-- O banco é definido pela variável DB_PATH.
-- Em produção, configure DB_PATH para um disco persistente da hospedagem, por exemplo /data/baixas.db.
-- Sem disco persistente, alguns provedores apagam o SQLite quando reiniciam/reimplantam o serviço.
-- Esta versão não possui login. Quem tiver acesso ao endereço poderá consultar/gravar dados.
-
-FLUXO:
-1. Abra o endereço publicado.
-2. Carregue Contas a Receber e Crédito Cliente.
-3. Clique Processar relatórios.
-4. Confira o resultado.
-5. Clique Gravar atualização.
-6. Em outro computador, use Abrir última atualização ou Histórico.
+Sem DATABASE_URL, o sistema usa SQLite somente como fallback local e NÃO deve ser considerado persistente no Render Free.
